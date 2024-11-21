@@ -1,5 +1,6 @@
 
-![pixlr-image-generator-e3f352f4-6b36-41ef-ab02-e9dff1e6960b](https://github.com/user-attachments/assets/d4d14666-db5e-4653-8288-d3ded6a629e2)
+![keyboardfxthumb](https://github.com/user-attachments/assets/e2c3e61c-4ded-4fdb-b51a-62d4c9250c05)
+
 
 # Project Scope and Goals
 
