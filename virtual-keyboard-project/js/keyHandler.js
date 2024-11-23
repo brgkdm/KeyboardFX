@@ -14,7 +14,6 @@ export function updateDisplay(keyText, displayElement) {
 
 export function highlightKey(keyText, keyAttr) {
     const key = Array.from(document.querySelectorAll('.key')).find(k => {
-        // return k.innerText.trim().toLowerCase() === keyText.trim().toLowerCase();
         return k.getAttribute("data-key") === keyAttr
     });
     if (key) {
@@ -22,9 +21,9 @@ export function highlightKey(keyText, keyAttr) {
     }
 }
 
-export function removeHighlight(keyText) {
+export function removeHighlight(keyText, keyAttr) {
     const key = Array.from(document.querySelectorAll('.key')).find(k => {
-        return k.innerText.trim().toLowerCase() === keyText.trim().toLowerCase();
+        return k.getAttribute("data-key") === keyAttr
     });
     if (key) {
         key.classList.remove('active');

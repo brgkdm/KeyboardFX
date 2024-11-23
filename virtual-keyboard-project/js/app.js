@@ -2,6 +2,8 @@ import { handleKeyPress, updateDisplay, highlightKey, removeHighlight } from './
 
 const keys = document.querySelectorAll('.key');
 const inputDisplay = document.querySelector('.input-display');
+let keyAttr = null;
+
 keys.forEach((key) => {
     key.addEventListener('click', (event) => {
         const keyText = key.innerText;
@@ -12,18 +14,32 @@ keys.forEach((key) => {
     });
 });
 
+const getTargetElement = (key, code) => {
+    const target = document.querySelector(`[data-key='${key.toLocaleUpperCase()}']`)
+    if (target) {
+        target.focus()
+        keyAttr = target.getAttribute('data-key')
+    } else {
+        const specialKeyAttr = document.querySelector(`[data-key=${code}]`)
+        specialKeyAttr.focus()
+        keyAttr = specialKeyAttr.getAttribute('data-key')
+    }
+}
 document.addEventListener('keydown', (event) => {
+    getTargetElement(event.key,event.code)
     const physicalKey = event.key;
     const mappedKey = keyMapping(physicalKey);
     handleKeyPress(mappedKey, inputDisplay);
     updateDisplay(mappedKey, inputDisplay);
-    highlightKey(mappedKey);
+    highlightKey(mappedKey, keyAttr);
 });
 
 document.addEventListener('keyup', (event) => {
+    getTargetElement(event.key,event.code)
+
     const physicalKey = event.key;
     const mappedKey = keyMapping(physicalKey);
-    removeHighlight(mappedKey);
+    removeHighlight(mappedKey, keyAttr);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
