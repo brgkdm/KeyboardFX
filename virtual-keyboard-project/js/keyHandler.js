@@ -12,9 +12,10 @@ export function updateDisplay(keyText, displayElement) {
     displayElement.innerText += keyText;
 }
 
-export function highlightKey(keyText) {
+export function highlightKey(keyText, keyAttr) {
     const key = Array.from(document.querySelectorAll('.key')).find(k => {
-        return k.innerText.trim().toLowerCase() === keyText.trim().toLowerCase();
+        // return k.innerText.trim().toLowerCase() === keyText.trim().toLowerCase();
+        return k.getAttribute("data-key") === keyAttr
     });
     if (key) {
         key.classList.add('active');

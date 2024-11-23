@@ -3,12 +3,12 @@ import { handleKeyPress, updateDisplay, highlightKey, removeHighlight } from './
 const keys = document.querySelectorAll('.key');
 const inputDisplay = document.querySelector('.input-display');
 keys.forEach((key) => {
-    key.addEventListener('click', () => {
+    key.addEventListener('click', (event) => {
         const keyText = key.innerText;
-        console.log(keyText)
+        const keyAttr = event.target.getAttribute("data-key")
         handleKeyPress(keyText, inputDisplay);
         updateDisplay(keyText, inputDisplay);
-        highlightKey(keyText);
+        highlightKey(keyText, keyAttr);
     });
 });
 
