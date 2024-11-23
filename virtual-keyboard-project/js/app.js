@@ -2,27 +2,33 @@ import { handleKeyPress, updateDisplay, highlightKey, removeHighlight } from './
 
 const keys = document.querySelectorAll('.key');
 const inputDisplay = document.querySelector('.input-display');
-
 keys.forEach((key) => {
     key.addEventListener('click', () => {
         const keyText = key.innerText;
-        updateDisplay(keyText, inputDisplay);
+        if (keyText === "Backspace" || keyText === "Enter" || keyText === "Space") {
+            handleKeyPress(keyText, inputDisplay);
+        } else {
+            updateDisplay(keyText, inputDisplay);
+        }
+        keys.forEach((k) => k.classList.remove("active"))
         highlightKey(keyText);
-        handleKeyPress(keyText);
     });
 });
 
 document.addEventListener('keydown', (event) => {
     const physicalKey = event.key;
     const mappedKey = keyMapping(physicalKey);
-    updateDisplay(mappedKey, inputDisplay);
-    highlightKey(mappedKey);
-    handleKeyPress(mappedKey);
+    if (mappedKey === "Backspace" || mappedKey=== "Enter" || mappedKey === "Space") {
+        handleKeyPress(mappedKey, inputDisplay);
+    } else {
+        updateDisplay(mappedKey, inputDisplay);
+    }    highlightKey(mappedKey);
 });
 
 document.addEventListener('keyup', (event) => {
     const physicalKey = event.key;
     const mappedKey = keyMapping(physicalKey);
+    keys.forEach((k) => k.classList.remove("active"))
     removeHighlight(mappedKey);
 });
 

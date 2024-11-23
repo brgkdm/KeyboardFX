@@ -3,6 +3,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     background-color: #090e0b;
     margin: 0;
@@ -93,10 +94,12 @@ body {
         transform: scale(1);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
     }
+
     50% {
         transform: scale(0.95);
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
     }
+
     100% {
         transform: scale(1);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
@@ -104,11 +107,25 @@ body {
 }
 
 @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .key-pressed {
@@ -136,4 +153,14 @@ body {
 
 .direction-key:active {
     background-color: #555;
+}
+
+.input-display {
+    border: 1px solid transparent;
+    padding: 10px;
+    font-size: 50px;
+    margin-top: 20px;
+    min-height: 40px;
+    color: #1a5d24;
+    word-break: break-all
 }
