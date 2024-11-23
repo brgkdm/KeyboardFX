@@ -5,12 +5,9 @@ const inputDisplay = document.querySelector('.input-display');
 keys.forEach((key) => {
     key.addEventListener('click', () => {
         const keyText = key.innerText;
-        if (keyText === "Backspace" || keyText === "Enter" || keyText === "Space") {
-            handleKeyPress(keyText, inputDisplay);
-        } else {
-            updateDisplay(keyText, inputDisplay);
-        }
-        keys.forEach((k) => k.classList.remove("active"))
+        console.log(keyText)
+        handleKeyPress(keyText, inputDisplay);
+        updateDisplay(keyText, inputDisplay);
         highlightKey(keyText);
     });
 });
@@ -18,17 +15,14 @@ keys.forEach((key) => {
 document.addEventListener('keydown', (event) => {
     const physicalKey = event.key;
     const mappedKey = keyMapping(physicalKey);
-    if (mappedKey === "Backspace" || mappedKey=== "Enter" || mappedKey === "Space") {
-        handleKeyPress(mappedKey, inputDisplay);
-    } else {
-        updateDisplay(mappedKey, inputDisplay);
-    }    highlightKey(mappedKey);
+    handleKeyPress(mappedKey, inputDisplay);
+    updateDisplay(mappedKey, inputDisplay);
+    highlightKey(mappedKey);
 });
 
 document.addEventListener('keyup', (event) => {
     const physicalKey = event.key;
     const mappedKey = keyMapping(physicalKey);
-    keys.forEach((k) => k.classList.remove("active"))
     removeHighlight(mappedKey);
 });
 
@@ -49,7 +43,9 @@ function keyMapping(physicalKey) {
         "ArrowDown": "↓",
         "ArrowLeft": "←",
         "ArrowRight": "→",
+        "Escape": "Esc",
+        "ContextMenu": "Menu"
     };
-    
+
     return keyMap[physicalKey] || physicalKey;
 }

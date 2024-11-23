@@ -156,6 +156,7 @@ body {
 }
 
 .input-display {
+    display: none;
     border: 1px solid transparent;
     padding: 10px;
     font-size: 50px;

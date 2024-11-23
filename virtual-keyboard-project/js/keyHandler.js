@@ -3,8 +3,8 @@ export function handleKeyPress(keyText, displayElement) {
         displayElement.innerText = displayElement.innerText.slice(0, -1);
     } else if (keyText === "Enter") {
         console.log("Enter tuşuna basıldı");
-    } else if (keyText === "Space") {
-        displayElement.innerText += "\xa0";
+    } else if (keyText.length === 1) {
+        displayElement.innerText += keyText;
     }
 }
 
